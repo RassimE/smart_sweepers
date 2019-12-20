@@ -1,4 +1,7 @@
 # smart_sweepers
-Köhnə proqramlara yeni yanaşma
-Köhnə proqramların yeni həyatı
-smart_sweepers С#-da
+Köhnə proqramlara yeni yanaşma.<br>
+Köhnə proqramların yeni həyatı.<br>
+smart_sweepers С#-da.<br><br>
+'F'	- toggles no render mode<br>
+'G'	- toggles renderer<br>
+'R'	- resets controller
