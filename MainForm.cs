@@ -48,7 +48,6 @@ namespace SmartSweepers
 			if (_controller == null)
 				return;
 			_controller.ControlChangedSize(this);
-			//_backBuffer = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

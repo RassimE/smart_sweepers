@@ -166,8 +166,6 @@ namespace SmartSweepers
 			}
 
 			int oldNum = m_NumMines;
-			//m_NumMines = (int)(0.1 * Math.Sqrt(cxClient * cyClient));
-			//m_NumMines = (int)((cxClient * cyClient)/4000.0);
 			m_NumMines = (int)(Math.Pow(cxClient * cyClient, 0.75) / 200.0);
 
 			Array.Resize(ref m_Mines, m_NumMines);
