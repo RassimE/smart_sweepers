@@ -297,10 +297,10 @@ namespace SmartSweepers
 				//render the mines
 				for (int i = 0; i < m_NumMines; ++i)
 				{
-					x = (int)(m_Mines[i].X) - Properties.Resources.Apple.Width / 2;
-					y = (int)(m_Mines[i].Y) - Properties.Resources.Apple.Height / 2;
+					x = (int)(m_Mines[i].X) - Properties.Resources.Syrup.Width / 2;
+					y = (int)(m_Mines[i].Y) - Properties.Resources.Syrup.Height / 2;
 
-					surface.DrawImage(Properties.Resources.Apple, x, y, Properties.Resources.Apple.Width, Properties.Resources.Apple.Height);
+					surface.DrawImage(Properties.Resources.Syrup, x, y, Properties.Resources.Syrup.Width, Properties.Resources.Syrup.Height);
 				}
 
 				ImageAttributes imageAttributes = new ImageAttributes();
