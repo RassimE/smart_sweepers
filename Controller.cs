@@ -3,7 +3,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace SmartSweepers
@@ -271,6 +273,8 @@ namespace SmartSweepers
 		//------------------------------------Render()--------------------------------------
 		//
 		//----------------------------------------------------------------------------------
+		//static
+		int step = 0;
 		public void Render(Graphics surface)
 		{
 			Font font = new Font(FontFamily.GenericMonospace, 11f, FontStyle.Bold);
@@ -305,9 +309,21 @@ namespace SmartSweepers
 				//we want the fittest displayed in red
 				Bitmap ant = Properties.Resources.bestAnt;
 #if !UseSweeperWorldTransform
-				x = -ant.Width / 2;
+
+				int w;
+				if ((side & 2) != 0)
+				{
+					w = ant.Width;
+					x = -ant.Width / 2;
+				}
+				else
+				{
+					w = -ant.Width;
+					x = ant.Width / 2;
+				}
+
 				y = -ant.Height / 2;
-				Rectangle rect = new Rectangle(x, y, ant.Width, ant.Height);
+				Rectangle rect = new Rectangle(x, y, w, ant.Height);
 
 				//render the sweepers
 				for (int i = 0; i < m_NumSweepers; i++)
@@ -329,9 +345,19 @@ namespace SmartSweepers
 				float w = (float)ant.Width / Params.iSweeperScale;
 				float h = (float)ant.Height / Params.iSweeperScale;
 
-				sweeper3[0] = new PointF(-0.5f * w, -0.5f * h);
-				sweeper3[1] = new PointF(0.5f * w, -0.5f * h);
-				sweeper3[2] = new PointF(-0.5f * w, 0.5f * h);
+				if ((step & 2) != 0)
+				{
+					sweeper3[0] = new PointF(-0.5f * w, -0.5f * h);
+					sweeper3[1] = new PointF(0.5f * w, -0.5f * h);
+					sweeper3[2] = new PointF(-0.5f * w, 0.5f * h);
+				}
+				else
+				{
+					sweeper3[0] = new PointF(0.5f * w, -0.5f * h);
+					sweeper3[1] = new PointF(-0.5f * w, -0.5f * h);
+					sweeper3[2] = new PointF(0.5f * w, 0.5f * h);
+				}
+
 				Rectangle rect = new Rectangle(0, 0, ant.Width, ant.Height);
 
 				PointF[] sweeperVB = new PointF[3];
@@ -345,10 +371,13 @@ namespace SmartSweepers
 
 					//transform the vertex buffer
 					m_Sweepers[i].WorldTransform(ref sweeperVB);
+
 					//draw ant image
 					surface.DrawImage(ant, sweeperVB, rect, GraphicsUnit.Pixel, imageAttributes);
+					//Application.DoEvents();
 				}
 #endif
+				step++;
 			}
 			else
 			{
