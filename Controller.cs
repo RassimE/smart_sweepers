@@ -271,6 +271,8 @@ namespace SmartSweepers
 		//------------------------------------Render()--------------------------------------
 		//
 		//----------------------------------------------------------------------------------
+		//static
+		int step = 0;
 		public void Render(Graphics surface)
 		{
 			Font font = new Font(FontFamily.GenericMonospace, 11f, FontStyle.Bold);
@@ -293,10 +295,10 @@ namespace SmartSweepers
 				//render the mines
 				for (int i = 0; i < m_NumMines; ++i)
 				{
-					x = (int)(m_Mines[i].X) - Properties.Resources.Apple.Width / 2;
-					y = (int)(m_Mines[i].Y) - Properties.Resources.Apple.Height / 2;
+					x = (int)(m_Mines[i].X) - Properties.Resources.Syrup.Width / 2;
+					y = (int)(m_Mines[i].Y) - Properties.Resources.Syrup.Height / 2;
 
-					surface.DrawImage(Properties.Resources.Apple, x, y, Properties.Resources.Apple.Width, Properties.Resources.Apple.Height);
+					surface.DrawImage(Properties.Resources.Syrup, x, y, Properties.Resources.Syrup.Width, Properties.Resources.Syrup.Height);
 				}
 
 				ImageAttributes imageAttributes = new ImageAttributes();
@@ -305,9 +307,21 @@ namespace SmartSweepers
 				//we want the fittest displayed in red
 				Bitmap ant = Properties.Resources.bestAnt;
 #if !UseSweeperWorldTransform
-				x = -ant.Width / 2;
+
+				int w;
+				if ((side & 2) != 0)
+				{
+					w = ant.Width;
+					x = -ant.Width / 2;
+				}
+				else
+				{
+					w = -ant.Width;
+					x = ant.Width / 2;
+				}
+
 				y = -ant.Height / 2;
-				Rectangle rect = new Rectangle(x, y, ant.Width, ant.Height);
+				Rectangle rect = new Rectangle(x, y, w, ant.Height);
 
 				//render the sweepers
 				for (int i = 0; i < m_NumSweepers; i++)
@@ -329,9 +343,19 @@ namespace SmartSweepers
 				float w = (float)ant.Width / Params.iSweeperScale;
 				float h = (float)ant.Height / Params.iSweeperScale;
 
-				sweeper3[0] = new PointF(-0.5f * w, -0.5f * h);
-				sweeper3[1] = new PointF(0.5f * w, -0.5f * h);
-				sweeper3[2] = new PointF(-0.5f * w, 0.5f * h);
+				if ((step & 2) != 0)
+				{
+					sweeper3[0] = new PointF(-0.5f * w, -0.5f * h);
+					sweeper3[1] = new PointF(0.5f * w, -0.5f * h);
+					sweeper3[2] = new PointF(-0.5f * w, 0.5f * h);
+				}
+				else
+				{
+					sweeper3[0] = new PointF(0.5f * w, -0.5f * h);
+					sweeper3[1] = new PointF(-0.5f * w, -0.5f * h);
+					sweeper3[2] = new PointF(0.5f * w, 0.5f * h);
+				}
+
 				Rectangle rect = new Rectangle(0, 0, ant.Width, ant.Height);
 
 				PointF[] sweeperVB = new PointF[3];
@@ -345,10 +369,13 @@ namespace SmartSweepers
 
 					//transform the vertex buffer
 					m_Sweepers[i].WorldTransform(ref sweeperVB);
+
 					//draw ant image
 					surface.DrawImage(ant, sweeperVB, rect, GraphicsUnit.Pixel, imageAttributes);
+					//Application.DoEvents();
 				}
 #endif
+				step++;
 			}
 			else
 			{
@@ -428,7 +455,7 @@ namespace SmartSweepers
 				m_dBestInHistory = bestFit;
 
 			//render the graph
-			float HSlice = (float)cxClient / (m_iGenerations + 1.0);
+			float HSlice = (float)(cxClient / (m_iGenerations + 1.0));
 			float VSlice = (float)(cyClient / ((m_dBestInHistory + 1.0) * 1.5));
 
 			//plot the graph for the best fitness

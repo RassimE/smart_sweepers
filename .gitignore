@@ -3,6 +3,13 @@
 ################################################################################
 
 /obj/Debug
+<<<<<<< HEAD
 /.vs/SmartSweepers/v15
 /.vs/SmartSweepers/v17
 /.vs/SmartSweepers/FileContentIndex
+=======
+/.vs
+/bin/Debug/SmartSweepers.pdb
+>>>>>>> aec8a1351cf4ca793228710fb61252a0ce571444
+/bin/Debug/SmartSweepers.exe
+/bin/Debug/SmartSweepers.exe.config

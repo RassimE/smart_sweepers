@@ -73,9 +73,9 @@ namespace SmartSweepers.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Apple {
+        internal static System.Drawing.Bitmap bestAnt {
             get {
-                object obj = ResourceManager.GetObject("Apple", resourceCulture);
+                object obj = ResourceManager.GetObject("bestAnt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace SmartSweepers.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bestAnt {
+        internal static System.Drawing.Bitmap Syrup {
             get {
-                object obj = ResourceManager.GetObject("bestAnt", resourceCulture);
+                object obj = ResourceManager.GetObject("Syrup", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
