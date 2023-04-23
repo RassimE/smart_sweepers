@@ -70,22 +70,10 @@ namespace SmartSweepers
 		//
 		//	returns the length of a 2D vector
 		//--------------------------------------------------------------------
-		//public double Length()
-		//{
-		//	return Math.Sqrt(X * X + Y * Y);
-		//}
 		public double Length
 		{
-			get
-			{
-				return Math.Sqrt(X * X + Y * Y);
-			}
+			get { return Math.Sqrt(X * X + Y * Y); }
 		}
-
-		//public static double Length(Vector2D v)
-		//{
-		//	return Math.Sqrt(v.X * v.X + v.Y * v.Y);
-		//}
 
 		//------------------------- Vec2DNormalize -----------------------------
 		//
@@ -94,7 +82,7 @@ namespace SmartSweepers
 		public void Normalize()
 		{
 			double vector_length = Length;
-			//this /= vector_length;
+
 			X /= vector_length;
 			Y /= vector_length;
 		}

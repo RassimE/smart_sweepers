@@ -163,8 +163,6 @@ namespace SmartSweepers
 					//for each weight
 					for (int k = 0; k < m_Layers[i].m_Neurons[j].m_NumInputs; ++k)
 						m_Layers[i].m_Neurons[j].m_vecWeight[k] = weights[cWeight++];
-
-			return;
 		}
 
 		//calculates the outputs from a set of inputs

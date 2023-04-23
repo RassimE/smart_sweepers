@@ -8,306 +8,247 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SmartSweepers.Properties
-{
-	[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
-	internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-	{
-
-		private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-		public static Settings Default
-		{
-			get
-			{
-				return defaultInstance;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("60")]
-		public int iFramesPerSecond
-		{
-			get
-			{
-				return ((int)(this["iFramesPerSecond"]));
-			}
-			set
-			{
-				this["iFramesPerSecond"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("4")]
-		public int iNumInputs
-		{
-			get
-			{
-				return ((int)(this["iNumInputs"]));
-			}
-			set
-			{
-				this["iNumInputs"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("1")]
-		public int iNumHidden
-		{
-			get
-			{
-				return ((int)(this["iNumHidden"]));
-			}
-			set
-			{
-				this["iNumHidden"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("6")]
-		public int iNeuronsPerHiddenLayer
-		{
-			get
-			{
-				return ((int)(this["iNeuronsPerHiddenLayer"]));
-			}
-			set
-			{
-				this["iNeuronsPerHiddenLayer"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("2")]
-		public int iNumOutputs
-		{
-			get
-			{
-				return ((int)(this["iNumOutputs"]));
-			}
-			set
-			{
-				this["iNumOutputs"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("5")]
-		public int iSweeperScale
-		{
-			get
-			{
-				return ((int)(this["iSweeperScale"]));
-			}
-			set
-			{
-				this["iSweeperScale"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("40")]
-		public int iNumMines
-		{
-			get
-			{
-				return ((int)(this["iNumMines"]));
-			}
-			set
-			{
-				this["iNumMines"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("30")]
-		public int iNumSweepers
-		{
-			get
-			{
-				return ((int)(this["iNumSweepers"]));
-			}
-			set
-			{
-				this["iNumSweepers"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("2000")]
-		public int iNumTicks
-		{
-			get
-			{
-				return ((int)(this["iNumTicks"]));
-			}
-			set
-			{
-				this["iNumTicks"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("4")]
-		public int iNumElite
-		{
-			get
-			{
-				return ((int)(this["iNumElite"]));
-			}
-			set
-			{
-				this["iNumElite"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("1")]
-		public int iNumCopiesElite
-		{
-			get
-			{
-				return ((int)(this["iNumCopiesElite"]));
-			}
-			set
-			{
-				this["iNumCopiesElite"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("1")]
-		public double dActivationResponse
-		{
-			get
-			{
-				return ((double)(this["dActivationResponse"]));
-			}
-			set
-			{
-				this["dActivationResponse"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("-1")]
-		public double dBias
-		{
-			get
-			{
-				return ((double)(this["dBias"]));
-			}
-			set
-			{
-				this["dBias"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("0.3")]
-		public double dMaxTurnRate
-		{
-			get
-			{
-				return ((double)(this["dMaxTurnRate"]));
-			}
-			set
-			{
-				this["dMaxTurnRate"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("2")]
-		public double dMaxSpeed
-		{
-			get
-			{
-				return ((double)(this["dMaxSpeed"]));
-			}
-			set
-			{
-				this["dMaxSpeed"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("2")]
-		public double dMineScale
-		{
-			get
-			{
-				return ((double)(this["dMineScale"]));
-			}
-			set
-			{
-				this["dMineScale"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("0.7")]
-		public double dCrossoverRate
-		{
-			get
-			{
-				return ((double)(this["dCrossoverRate"]));
-			}
-			set
-			{
-				this["dCrossoverRate"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("0.1")]
-		public double dMutationRate
-		{
-			get
-			{
-				return ((double)(this["dMutationRate"]));
-			}
-			set
-			{
-				this["dMutationRate"] = value;
-			}
-		}
-
-		[global::System.Configuration.UserScopedSettingAttribute()]
-		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-		[global::System.Configuration.DefaultSettingValueAttribute("0.3")]
-		public double dMaxPerturbation
-		{
-			get
-			{
-				return ((double)(this["dMaxPerturbation"]));
-			}
-			set
-			{
-				this["dMaxPerturbation"] = value;
-			}
-		}
-	}
+namespace SmartSweepers.Properties {
+    
+    
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.5.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int iFramesPerSecond {
+            get {
+                return ((int)(this["iFramesPerSecond"]));
+            }
+            set {
+                this["iFramesPerSecond"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int iNumInputs {
+            get {
+                return ((int)(this["iNumInputs"]));
+            }
+            set {
+                this["iNumInputs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int iNumHidden {
+            get {
+                return ((int)(this["iNumHidden"]));
+            }
+            set {
+                this["iNumHidden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public int iNeuronsPerHiddenLayer {
+            get {
+                return ((int)(this["iNeuronsPerHiddenLayer"]));
+            }
+            set {
+                this["iNeuronsPerHiddenLayer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int iNumOutputs {
+            get {
+                return ((int)(this["iNumOutputs"]));
+            }
+            set {
+                this["iNumOutputs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int iSweeperScale {
+            get {
+                return ((int)(this["iSweeperScale"]));
+            }
+            set {
+                this["iSweeperScale"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        public int iNumMines {
+            get {
+                return ((int)(this["iNumMines"]));
+            }
+            set {
+                this["iNumMines"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int iNumSweepers {
+            get {
+                return ((int)(this["iNumSweepers"]));
+            }
+            set {
+                this["iNumSweepers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int iNumTicks {
+            get {
+                return ((int)(this["iNumTicks"]));
+            }
+            set {
+                this["iNumTicks"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int iNumElite {
+            get {
+                return ((int)(this["iNumElite"]));
+            }
+            set {
+                this["iNumElite"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int iNumCopiesElite {
+            get {
+                return ((int)(this["iNumCopiesElite"]));
+            }
+            set {
+                this["iNumCopiesElite"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public double dActivationResponse {
+            get {
+                return ((double)(this["dActivationResponse"]));
+            }
+            set {
+                this["dActivationResponse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public double dBias {
+            get {
+                return ((double)(this["dBias"]));
+            }
+            set {
+                this["dBias"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        public double dMaxTurnRate {
+            get {
+                return ((double)(this["dMaxTurnRate"]));
+            }
+            set {
+                this["dMaxTurnRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double dMaxSpeed {
+            get {
+                return ((double)(this["dMaxSpeed"]));
+            }
+            set {
+                this["dMaxSpeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double dMineScale {
+            get {
+                return ((double)(this["dMineScale"]));
+            }
+            set {
+                this["dMineScale"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.7")]
+        public double dCrossoverRate {
+            get {
+                return ((double)(this["dCrossoverRate"]));
+            }
+            set {
+                this["dCrossoverRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
+        public double dMutationRate {
+            get {
+                return ((double)(this["dMutationRate"]));
+            }
+            set {
+                this["dMutationRate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        public double dMaxPerturbation {
+            get {
+                return ((double)(this["dMaxPerturbation"]));
+            }
+            set {
+                this["dMaxPerturbation"] = value;
+            }
+        }
+    }
 }

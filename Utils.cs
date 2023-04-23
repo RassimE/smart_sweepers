@@ -32,7 +32,8 @@ namespace SmartSweepers
 		//returns a random float in the range -1 < n < 1
 		public static double RandomClamped()
 		{
-			return 1.0 - 2.0 * rand.NextDouble();
+			return rand.NextDouble() - 0.5;
+			//return 1.0 - 2.0 * rand.NextDouble();
 			//return rand.NextDouble() - rand.NextDouble();
 		}
 

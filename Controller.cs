@@ -428,8 +428,8 @@ namespace SmartSweepers
 				m_dBestInHistory = bestFit;
 
 			//render the graph
-			float HSlice = (float)cxClient / (m_iGenerations + 1f);
-			float VSlice = (float)(cyClient / ((m_dBestInHistory + 1f) * 1.5));
+			float HSlice = (float)cxClient / (m_iGenerations + 1.0);
+			float VSlice = (float)(cyClient / ((m_dBestInHistory + 1.0) * 1.5));
 
 			//plot the graph for the best fitness
 			float x = 0;
