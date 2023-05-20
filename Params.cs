@@ -64,7 +64,7 @@ namespace SmartSweepers
 		//ctor
 		public Params()
 		{
-			fillMapDefaultValies();
+			FillMapDefaultValies();
 
 			string path = Path.GetDirectoryName(Application.ExecutablePath);
 			if (!LoadInParameters(path + "\\params.ini"))
@@ -73,30 +73,32 @@ namespace SmartSweepers
 			}
 		}
 
-		void fillMapDefaultValies()
+		void FillMapDefaultValies()
 		{
-			paramsDictionary = new Dictionary<string, object>();
-			paramsDictionary["iFramesPerSecond"] = 60;
-			paramsDictionary["iNumInputs"] = 4;
-			paramsDictionary["iNumHidden"] = 1;
-			paramsDictionary["iNeuronsPerHiddenLayer"] = 6;
-			paramsDictionary["iNumOutputs"] = 2;
-			paramsDictionary["dActivationResponse"] = 1;
-			paramsDictionary["dBias"] = -1;
-			paramsDictionary["dMaxTurnRate"] = 0.3;
-			paramsDictionary["dMaxSpeed"] = 2;
-			paramsDictionary["iSweeperScale"] = 5;
-			paramsDictionary["iNumMines"] = 40;
-			paramsDictionary["iNumSweepers"] = 30;
-			paramsDictionary["iNumTicks"] = 2000;
-			paramsDictionary["dMineScale"] = 2;
-			paramsDictionary["dCrossoverRate"] = 0.7;
-			paramsDictionary["dMutationRate"] = 0.1;
-			paramsDictionary["dMaxPerturbation"] = 0.3;
-			paramsDictionary["iNumElite"] = 4;
-			paramsDictionary["iNumCopiesElite"] = 1;
-			paramsDictionary["iRenderer"] = 1;
-			paramsDictionary["iFullScreen"] = false;
+			paramsDictionary = new Dictionary<string, object>
+			{
+				["iFramesPerSecond"] = 60,
+				["iNumInputs"] = 4,
+				["iNumHidden"] = 1,
+				["iNeuronsPerHiddenLayer"] = 6,
+				["iNumOutputs"] = 2,
+				["dActivationResponse"] = 1,
+				["dBias"] = -1,
+				["dMaxTurnRate"] = 0.3,
+				["dMaxSpeed"] = 2,
+				["iSweeperScale"] = 5,
+				["iNumMines"] = 40,
+				["iNumSweepers"] = 30,
+				["iNumTicks"] = 2000,
+				["dMineScale"] = 2,
+				["dCrossoverRate"] = 0.7,
+				["dMutationRate"] = 0.1,
+				["dMaxPerturbation"] = 0.3,
+				["iNumElite"] = 4,
+				["iNumCopiesElite"] = 1,
+				["iRenderer"] = 1,
+				["iFullScreen"] = false
+			};
 		}
 
 		void LoadMapValiesFromFile(string FileName)

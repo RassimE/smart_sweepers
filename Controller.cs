@@ -14,7 +14,7 @@ namespace SmartSweepers
 		const int NumSweeperVerts = 16;
 		const int NumMineVerts = 4;
 
-		private PointF[] sweeper = {
+		private readonly PointF[] sweeper = {
 		new PointF(-1, -1),
 		new PointF(-1, 1),
 		new PointF(-0.5f, 1),
@@ -35,66 +35,94 @@ namespace SmartSweepers
 		new PointF(0.25f, 0.5f),
 		new PointF(0.5f, 0.5f) };
 
-		private PointF[] mine = {
+		private readonly PointF[] mine = {
 		//new PointF(0,  -2),
 		new PointF(-1, -1),
 		new PointF(-1,  1),
 		new PointF(1,  1),
 		new PointF(1, -1) };
 
-		//storage for the population of genomes
+		/// <summary>
+		/// storage for the population of genomes
+		/// </summary>
 		private Genome[] m_ThePopulation;
 
-		//and the minesweepers
-		private Minesweeper[] m_Sweepers;
+		/// <summary>
+		/// and the minesweepers
+		/// </summary>
+		private readonly Minesweeper[] m_Sweepers;
 
-		//and the mines
+		/// <summary>
+		/// and the mines
+		/// </summary>
 		private Vector2D[] m_Mines;
 
-		//pointer to the GA
-		private GenAlg m_pGA;
-		private int m_NumSweepers;
+		/// <summary>
+		/// pointer to the GA
+		/// </summary>
+		private readonly GenAlg m_pGA;
+		private readonly int m_NumSweepers;
 		private int m_NumMines;
-		private int m_NumWeightsInNN;
+		private readonly int m_NumWeightsInNN;
 
-		//vertex buffer for the sweeper shape's vertices
-		private PointF[] m_SweeperVB;
+		/// <summary>
+		/// vertex buffer for the sweeper shape's vertices
+		/// </summary>
+		private readonly PointF[] m_SweeperVB;
 
-		//vertex buffer for the mine shape's vertices
-		private PointF[] m_MineVB;
+		/// <summary>
+		/// vertex buffer for the mine shape's vertices
+		/// </summary>
+		private readonly PointF[] m_MineVB;
 
-		//stores the average fitness per generation for use in graphing.
-		private List<double> m_vecAvFitness;
+		/// <summary>
+		/// stores the average fitness per generation for use in graphing.
+		/// </summary>
+		private readonly List<double> m_vecAvFitness;
 
-		//stores the best fitness per generation
-		private List<double> m_vecBestFitness;
+		/// <summary>
+		/// stores the best fitness per generation
+		/// </summary>
+		private readonly List<double> m_vecBestFitness;
 
-		//pens we use for the stats
-		private Pen m_fittPen;          // fittest
-		private Pen m_sweepPen;         // normal
-		private Pen m_minePen;          // mine
+		/// <summary>
+		/// pens we use for the stats
+		/// </summary>
+		private readonly Pen m_fittPen;          // fittest
+		private readonly Pen m_sweepPen;         // normal
+		private readonly Pen m_minePen;          // mine
 
-		//handle to the application window
+		/// <summary>
+		/// handle to the application window
+		/// </summary>
 		private Control m_Main;
 
-		//toggles the speed at which the simulation runs
+		/// <summary>
+		/// toggles the speed at which the simulation runs
+		/// </summary>
 		private bool m_bFastRender;
 
-		//cycles per generation
+		/// <summary>
+		/// cycles per generation
+		/// </summary>
 		private int m_iTicks;
 
-		//generation counter
+		/// <summary>
+		/// generation counter
+		/// </summary>
 		private int m_iGenerations;
 
-		//window dimensions
+		/// <summary>
+		/// window dimensions
+		/// </summary>
 		private int cxClient, cyClient;
 
 		private double m_dBestInHistory;
-		//---------------------------------------constructor---------------------
-		//
-		//	initilaize the sweepers, their brains and the GA factory
-		//
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// constructor -
+		///	initilaize the sweepers, their brains and the GA factory
+		/// </summary>
+		/// <param name="frmMain"></param>
 		public Controller(Control frmMain)
 		{
 			m_dBestInHistory = double.MinValue;
@@ -150,6 +178,10 @@ namespace SmartSweepers
 			Array.Copy(mine, m_MineVB, NumMineVerts);
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="frmMain"></param>
 		public void ControlChangedSize(Control frmMain)
 		{
 			m_Main = frmMain;
@@ -173,18 +205,21 @@ namespace SmartSweepers
 			for (int i = oldNum; i < m_NumMines; ++i)
 				m_Mines[i] = Vector2D.GetRandom(cxClient, cyClient);
 		}
+
 		//public ~Controller() { }
 
-		//---------------------WorldTransform--------------------------------
-		//
-		//	sets up the translation matrices for the mines and applies the
-		//	world transform to each vertex in the vertex buffer passed to this
-		//	method.
-		//-------------------------------------------------------------------
+		/// <summary>
+		/// WorldTransform -
+		///	sets up the translation matrices for the mines and applies the
+		///	world transform to each vertex in the vertex buffer passed to this
+		///	method.
+		/// </summary>
+		/// <param name="VBuffer"></param>
+		/// <param name="vPos"></param>
 		public void WorldTransform(ref PointF[] VBuffer, Vector2D vPos)
 		{
 			//create the world transformation matrix
-			Matrix2D matTransform = new Matrix2D(0);
+			Matrix2D matTransform = new Matrix2D();
 
 			//scale
 			matTransform.Scale(Params.dMineScale, Params.dMineScale);
@@ -196,12 +231,12 @@ namespace SmartSweepers
 			matTransform.TransformPoints(ref VBuffer);
 		}
 
-		//-------------------------------------Update-----------------------------
-		//
-		//	This is the main workhorse. The entire simulation is controlled from here.
-		//
-		//	The comments should explain what is going on adequately.
-		//-------------------------------------------------------------------------
+		/// <summary>
+		/// Update -
+		///	This is the main workhorse. The entire simulation is controlled from here.
+		///	The comments should explain what is going on adequately.
+		/// </summary>
+		/// <returns></returns>
 		public bool Update()
 		{
 			//run the sweepers through Params::iNumTicks amount of cycles. During
@@ -268,11 +303,12 @@ namespace SmartSweepers
 			return true;
 		}
 
-		//------------------------------------Render()--------------------------------------
-		//
-		//----------------------------------------------------------------------------------
-		//static
-		int step = 0;
+		static int step = 0;
+
+		/// <summary>
+		/// Render 
+		/// </summary>
+		/// <param name="surface"></param>
 		public void Render(Graphics surface)
 		{
 			Font font = new Font(FontFamily.GenericMonospace, 11f, FontStyle.Bold);
@@ -434,13 +470,14 @@ namespace SmartSweepers
 			}
 		}
 
-		//this function plots a graph of the average and best fitnesses
-		//over the course of a run
-		//--------------------------PlotStats-------------------------------------
-		//
-		//  Given a surface to draw on this function displays stats and a crude
-		//  graph showing best and average fitness
-		//------------------------------------------------------------------------
+		///<summary>
+		/// PlotStats -
+		/// this function plots a graph of the average and best fitnesses
+		/// over the course of a run
+		///  Given a surface to draw on this function displays stats and a crude
+		///  graph showing best and average fitness
+		///</summary>
+		/// <param name="surface"></param>
 		private void PlotStats(Graphics surface)
 		{
 			double bestFit = m_pGA.BestFitness();
@@ -461,7 +498,7 @@ namespace SmartSweepers
 			//plot the graph for the best fitness
 			float x = 0;
 
-			PointF pt0 = default(PointF), pt1 = default(PointF);
+			PointF pt0 = default, pt1 = default;
 			pt0.X = 0;
 			pt0.Y = cyClient;
 

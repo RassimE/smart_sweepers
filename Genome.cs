@@ -31,8 +31,12 @@ namespace SmartSweepers
 
 		//=================================================
 
-		// Implements System.IComparable.CompareTo
-		//used for sorting
+		/// <summary>
+		/// Implements System.IComparable.CompareTo
+		/// used for sorting
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
 		public int CompareTo(object obj)
 		{
 			Genome a = (Genome)obj;
@@ -41,6 +45,5 @@ namespace SmartSweepers
 
 			return 0;
 		}
-
 	}
 }

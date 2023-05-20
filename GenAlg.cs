@@ -9,46 +9,68 @@ namespace SmartSweepers
 	//-----------------------------------------------------------------------
 	internal class GenAlg
 	{
-		//this holds the entire population of chromosomes
-		private	Genome[] m_vecPop;
+		/// <summary>
+		///this holds the entire population of chromosomes
+		/// </summary>
+		private Genome[] m_vecPop;
 
-		//size of population
-		private int m_iPopSize;
+		/// <summary>
+		///size of population
+		/// </summary>
+		private readonly int m_iPopSize;
 
-		//amount of weights per chromo
-		private int m_iChromoLength;
+		/// <summary>
+		///amount of weights per chromo
+		/// </summary>
+		private readonly int m_iChromoLength;
 
-		//total fitness of population
+		/// <summary>
+		///total fitness of population
+		/// </summary>
 		private double m_dTotalFitness;
 
-		//best fitness this population
+		/// <summary>
+		///best fitness this population
+		/// </summary>
 		private double m_dBestFitness;
 
-		//average fitness
-		private double m_dAverageFitness;
+		/// <summary>
+		///average fitness
+		/// </summary>
+		//private double m_dAverageFitness;
 
-		//worst
-		private double m_dWorstFitness;
+		///<summary>
+		///worst
+		///</summary>
+		//private double m_dWorstFitness;
 
-		//keeps track of the best genome
-		private int m_iFittestGenome;
+		/// <summary>
+		///keeps track of the best genome
+		/// </summary>
+		//private int m_iFittestGenome;
 
-		//probability that a chromosones bits will mutate.
-		//Try figures around 0.05 to 0.3 ish
-		private double m_dMutationRate;
+		/// <summary>
+		///probability that a chromosones bits will mutate.
+		///Try figures around 0.05 to 0.3 ish
+		/// </summary>
+		private readonly double m_dMutationRate;
 
-		//probability of chromosones crossing over bits
-		//0.7 is pretty good
-		private double m_dCrossoverRate;
+		/// <summary>
+		/// probability of chromosones crossing over bits
+		///0.7 is pretty good
+		/// </summary>
+		private readonly double m_dCrossoverRate;
 
-		//generation counter
+		/// <summary>
+		///generation counter
+		/// </summary>
 		//private int m_cGeneration;
 
-		//-------------------------------------Crossover()-----------------------
-		//	
-		//  given parents and storage for the offspring this method performs
-		//	crossover according to the GAs crossover rate
-		//-----------------------------------------------------------------------
+		/// <summary>
+		///Crossover - 
+		/// given parents and storage for the offspring this method performs
+		///	crossover according to the GAs crossover rate
+		/// </summary>
 		private void Crossover(ref double[] mum, ref double[] dad, out double[] baby1, out double[] baby2)
 		{
 			int len = mum.Length;
@@ -83,11 +105,11 @@ namespace SmartSweepers
 			}
 		}
 
-		//---------------------------------Mutate--------------------------------
-		//
-		//	mutates a chromosome by perturbing its weights by an amount not 
-		//	greater than Params::dMaxPerturbation
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// Mutate -
+		///	mutates a chromosome by perturbing its weights by an amount not 
+		///	greater than Params.dMaxPerturbation
+		/// </summary>
 		private void Mutate(ref double[] chromo)
 		{
 			//traverse the chromosome and mutate each weight dependent
@@ -99,11 +121,10 @@ namespace SmartSweepers
 					chromo[i] += Utils.RandomClamped() * Params.dMaxPerturbation;
 		}
 
-		//----------------------------------GetChromoRoulette()------------------
-		//
-		//	returns a chromo based on roulette wheel sampling
-		//
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// GetChromoRoulette -
+		///	returns a chromo based on roulette wheel sampling
+		/// </summary>
 		private Genome GetChromoRoulette()
 		{
 			//generate a random number between 0 & total fitness count
@@ -131,12 +152,12 @@ namespace SmartSweepers
 			return TheChosenOne;
 		}
 
-		//use to introduce elitism
-		//-------------------------GrabNBest----------------------------------
-		//
-		//	This works like an advanced form of elitism by inserting NumCopies
-		//  copies of the NBest most fittest genomes into a population vector
-		//--------------------------------------------------------------------
+		///<summary>
+		/// use to introduce elitism
+		/// GrabNBest -
+		///	This works like an advanced form of elitism by inserting NumCopies
+		/// copies of the NBest most fittest genomes into a population vector
+		///</summary>
 		private void GrabNBest(int NBest, int NumCopies, ref Genome[] elitPop)
 		{
 			//add the required amount of copies of the n most fittest 
@@ -147,16 +168,16 @@ namespace SmartSweepers
 					elitPop[(st - NBest) * NumCopies + i] = m_vecPop[st - NBest];
 		}
 
-		//-----------------------CalculateBestWorstAvTot-----------------------	
-		//
-		//	calculates the fittest and weakest genome and the average/total 
-		//	fitness scores
-		//---------------------------------------------------------------------
+		///<summary>
+		/// CalculateBestWorstAvTot -
+		///	calculates the fittest and weakest genome and the average/total 
+		///	fitness scores
+		///</summary>
 		private void CalculateBestWorstAvTot()
 		{
-			m_iFittestGenome = 0;
+			//m_iFittestGenome = 0;
 			m_dBestFitness = m_vecPop[0].dFitness;
-			m_dWorstFitness = m_vecPop[m_iPopSize - 1].dFitness;
+			//m_dWorstFitness = m_vecPop[m_iPopSize - 1].dFitness;
 
 			m_dTotalFitness = 0;
 
@@ -164,26 +185,29 @@ namespace SmartSweepers
 			while (i >= 0)
 				m_dTotalFitness += m_vecPop[i--].dFitness;
 
-			m_dAverageFitness = m_dTotalFitness / m_iPopSize;
+			//m_dAverageFitness = m_dTotalFitness / m_iPopSize;
 		}
 
-		//-------------------------Reset()------------------------------
-		//
-		//	resets all the relevant variables ready for a new generation
-		//--------------------------------------------------------------
+		///<summary>
+		/// Reset -
+		///	resets all the relevant variables ready for a new generation
+		///</summary>
 		void Reset()
 		{
 			m_dTotalFitness = 0;
 			m_dBestFitness = 0;
-			m_dWorstFitness = double.MaxValue;
-			m_dAverageFitness = 0;
+			//m_dWorstFitness = double.MaxValue;
+			//m_dAverageFitness = 0;
 		}
-		//==========================
-		//-----------------------------------constructor-------------------------
-		//
-		//	sets up the population with random floats
-		//
-		//-----------------------------------------------------------------------
+
+		/// <summary>
+		/// constructor -
+		///	sets up the population with random floats
+		/// </summary>
+		/// <param name="popsize"></param>
+		/// <param name="MutRat"></param>
+		/// <param name="CrossRat"></param>
+		/// <param name="numweights"></param>
 		public GenAlg(int popsize, double MutRat, double CrossRat, int numweights)
 		{
 			m_iPopSize = popsize;
@@ -192,10 +216,10 @@ namespace SmartSweepers
 			m_iChromoLength = numweights;
 			m_dTotalFitness = 0;
 			///m_cGeneration = 0;
-			m_iFittestGenome = 0;
+			//m_iFittestGenome = 0;
 			m_dBestFitness = 0;
-			m_dWorstFitness = double.MaxValue;
-			m_dAverageFitness = 0;
+			//m_dWorstFitness = double.MaxValue;
+			//m_dAverageFitness = 0;
 
 			m_vecPop = new Genome[m_iPopSize];
 
@@ -205,14 +229,16 @@ namespace SmartSweepers
 				m_vecPop[i] = new Genome(m_iChromoLength);
 		}
 
-		//this runs the GA for one generation.
-		//-----------------------------------Epoch()-----------------------------
-		//
-		//	takes a population of chromosones and runs the algorithm through one
-		//	 cycle.
-		//	Returns a new population of chromosones.
-		//
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// Epoch -
+		/// this runs the GA for one generation.
+		///	takes a population of chromosones and runs the algorithm through one
+		///	 cycle.
+		/// </summary>
+		/// <param name="old_pop"></param>
+		///<returns>
+		///	Returns a new population of chromosones.
+		///</returns>
 		public Genome[] Epoch(ref Genome[] old_pop)
 		{
 			//assign the given population to the classes population
@@ -246,9 +272,7 @@ namespace SmartSweepers
 				Genome dad = GetChromoRoulette();
 
 				//create some offspring via crossover
-				double[] baby1, baby2;
-
-				Crossover(ref mum.vecWeights, ref dad.vecWeights, out baby1, out baby2);
+				Crossover(ref mum.vecWeights, ref dad.vecWeights, out double[] baby1, out double[] baby2);
 
 				//now we mutate
 				Mutate(ref baby1);
@@ -266,17 +290,27 @@ namespace SmartSweepers
 			return m_vecPop;
 		}
 
-		//-------------------accessor methods
+		/// <summary>
+		///  accessor methods
+		/// </summary>
+		/// <returns></returns>
 		public Genome[] GetChromos()
 		{
 			return m_vecPop;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public double AverageFitness()
 		{
 			return m_dTotalFitness / m_iPopSize;
 		}
-
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public double BestFitness()
 		{
 			return m_dBestFitness;

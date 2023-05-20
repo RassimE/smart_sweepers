@@ -7,12 +7,12 @@ namespace SmartSweepers
 		private long m_CurrentTime;
 		private long m_LastTime;
 		private long m_NextTime;
-		private long m_FrameTime;
-		private long m_PerfCountFreq;
+		private readonly long m_FrameTime;
+		private readonly long m_PerfCountFreq;
 
 		private double m_TimeElapsed;
-		private double m_TimeScale;
-		private float m_FPS;
+		private readonly double m_TimeScale;
+		private readonly float m_FPS;
 
 		//---------------------- default constructor ------------------------------
 		//
@@ -30,11 +30,14 @@ namespace SmartSweepers
 			m_TimeScale = 1.0 / m_PerfCountFreq;
 		}
 
-		//---------------------- constructor -------------------------------------
-		//
-		//	use to specify FPS
-		//
-		//-------------------------------------------------------------------------
+		/// <summary>
+		/// constructor -
+		///	use to specify FPS
+		/// </summary>
+		/// <param name="fps">
+		///	use to specify FPS
+		/// </param>
+
 		public CTimer(float fps)
 		{
 			m_FPS = fps;
@@ -51,12 +54,11 @@ namespace SmartSweepers
 			m_FrameTime = (long)(m_PerfCountFreq / m_FPS);
 		}
 
-		//------------------------Start()-----------------------------------------
-		//
-		//	call this immediately prior to game loop. Starts the timer (obviously!)
-		//
-		//--------------------------------------------------------------------------
-		//whatdayaknow, this starts the timer
+		/// <summary>
+		/// Start -
+		///	call this immediately prior to game loop. Starts the timer (obviously!)
+		/// what day a know, this starts the timer
+		/// </summary>
 		public void Start()
 		{
 			//get the time
@@ -68,13 +70,14 @@ namespace SmartSweepers
 			return;
 		}
 
-		//-------------------------ReadyForNextFrame()-------------------------------
-		//
-		//	returns true if it is time to move on to the next frame step. To be used if
-		//	FPS is set.
-		//
-		//----------------------------------------------------------------------------
-		//determines if enough time has passed to move onto next frame
+		/// <summary>
+		/// ReadyForNextFrame -
+		/// determines if enough time has passed to move onto next frame
+		/// </summary>
+		/// <returns>
+		///	returns true if it is time to move on to the next frame step. To be used if
+		///	FPS is set.
+		/// </returns>
 		public bool ReadyForNextFrame()
 		{
 			if (m_FPS == 0)
@@ -97,15 +100,19 @@ namespace SmartSweepers
 			return true;
 		}
 
-		//only use this after a call to the above.
+		/// <summary>
+		/// only use this after a call to the above.
+		/// </summary>
+		/// <returns></returns>
 		public double GetTimeElapsed() { return m_TimeElapsed; }
 
-		//--------------------------- TimeElapsed --------------------------------
-		//
-		//	returns time elapsed since last call to this function. Use in main
-		//	when calculations are to be based on dt.
-		//
-		//-------------------------------------------------------------------------
+		/// <summary>
+		/// TimeElapsed -
+		///	Use in main when calculations are to be based on dt.
+		/// </summary>
+		/// <returns>
+		///	returns time elapsed since last call to this function.
+		/// </returns>
 		public double TimeElapsed()
 		{
 			m_CurrentTime = Stopwatch.GetTimestamp();

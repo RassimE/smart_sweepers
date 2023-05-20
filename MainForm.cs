@@ -14,7 +14,6 @@ namespace SmartSweepers
 		{
 			InitializeComponent();
 
-			Params rm = new Params();
 			Size clientSize = new Size(Params.WindowWidth, Params.WindowHeight);
 			this.ClientSize = clientSize;
 

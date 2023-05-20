@@ -91,8 +91,8 @@ namespace SmartSweepers
 		{
 			double vector_length = v.Length;
 
-			v.X = v.X / vector_length;
-			v.Y = v.Y / vector_length;
+			v.X /= vector_length;
+			v.Y /= vector_length;
 		}
 
 		//------------------------- Vec2DDot --------------------------

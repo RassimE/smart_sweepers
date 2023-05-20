@@ -7,7 +7,7 @@ namespace SmartSweepers
 		//----------------------------------------------------------------------------
 		//	some random number functions.
 		//----------------------------------------------------------------------------
-		static Random rand = new Random(DateTime.Now.Millisecond);
+		static readonly Random rand = new Random(DateTime.Now.Millisecond);
 
 		//returns a random integer between x and y
 		public static int RandInt(int x, int y)

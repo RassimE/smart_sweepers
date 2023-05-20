@@ -5,30 +5,46 @@ namespace SmartSweepers
 {
 	internal class Minesweeper
 	{
-		//the minesweeper's neural net
-		private NeuralNet m_ItsBrain;
+		/// <summary>
+		/// the minesweeper's neural net
+		/// </summary>
+		private readonly NeuralNet m_ItsBrain;
 
-		//its position in the world
+		/// <summary>
+		/// its position in the world
+		/// </summary>
 		private Vector2D m_vPosition;
 
-		//direction sweeper is facing
+		/// <summary>
+		/// direction sweeper is facing
+		/// </summary>
 		private Vector2D m_vLookAt;
 
-		//its rotation (surprise surprise)
+		/// <summary>
+		/// its rotation (surprise surprise)
+		/// </summary>
 		private double m_dRotation;
 
 		private double m_dSpeed;
 
-		//to store output from the ANN
+		/// <summary>
+		/// to store output from the ANN
+		/// </summary>
 		private double m_lTrack, m_rTrack;
 
-		//the sweeper's fitness score 
+		/// <summary>
+		/// the sweeper's fitness score 
+		/// </summary>
 		private double m_dFitness;
 
-		//the scale of the sweeper when drawn
-		private double m_dScale;
+		/// <summary>
+		/// the scale of the sweeper when drawn
+		/// </summary>
+		private readonly double m_dScale;
 
-		//index position of closest mine
+		/// <summary>
+		/// index position of closest mine
+		/// </summary>
 		private int m_iClosestMine;
 
 		public Minesweeper()
@@ -52,21 +68,21 @@ namespace SmartSweepers
 			if (arg > max) arg = max;
 		}
 
-		//updates the ANN with information from the sweepers enviroment
-		//-------------------------------Update()--------------------------------
-		//
-		//	First we take sensor readings and feed these into the sweepers brain.
-		//
-		//	The inputs are:
-		//	
-		//	A vector to the closest mine (x, y)
-		//	The sweepers 'look at' vector (x, y)
-		//
-		//	We receive two outputs from the brain.. lTrack & rTrack.
-		//	So given a force for each track we calculate the resultant rotation 
-		//	and acceleration and apply to current velocity vector.
-		//
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// Update -
+		/// updates the ANN with information from the sweepers enviroment
+		/// </summary>
+		/// 
+		/// <param name="mines">
+		///	A vector to the closest mine (x, y)
+		///	First we take sensor readings and feed these into the sweepers brain.
+		///	The sweepers 'look at' vector (x, y)
+		/// </param>
+		/// <returns>
+		///	We receive two outputs from the brain.. lTrack & rTrack.
+		///	So given a force for each track we calculate the resultant rotation 
+		///	and acceleration and apply to current velocity vector.
+		/// </returns>
 		public bool Update(ref Vector2D[] mines)
 		{
 			//get vector to closest mine
@@ -133,7 +149,7 @@ namespace SmartSweepers
 		public void WorldTransform(ref PointF[] sweeper)
 		{
 			//create the world transformation matrix
-			Matrix2D matTransform = new Matrix2D(0);
+			Matrix2D matTransform = new Matrix2D();
 
 			//scale
 			matTransform.Scale(m_dScale, m_dScale);
@@ -158,7 +174,7 @@ namespace SmartSweepers
 		{
 			double closest_so_far = double.MaxValue;
 
-			Vector2D vClosestObject = default(Vector2D);
+			Vector2D vClosestObject = default;
 
 			//cycle through mines to find closest
 			for (int i = 0; i < mines.Length; i++)

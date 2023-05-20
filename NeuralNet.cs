@@ -55,18 +55,20 @@ namespace SmartSweepers
 
 	internal class NeuralNet
 	{
-		private int m_NumInputs;
-		private int m_NumOutputs;
-		private int m_NumHiddenLayers;
-		private int m_NeuronsPerHiddenLyr;
+		private readonly int m_NumInputs;
+		private readonly int m_NumOutputs;
+		private readonly int m_NumHiddenLayers;
+		private readonly int m_NeuronsPerHiddenLyr;
 
-		//storage for each layer of neurons including the output layer
-		private NeuronLayer[] m_Layers;
+		/// <summary>
+		/// storage for each layer of neurons including the output layer
+		/// </summary>
+		private readonly NeuronLayer[] m_Layers;
 
-		//------------------------------default ctor ----------------------------
-		//
-		//	creates a ANN based on the default values in params.ini
-		//-----------------------------------------------------------------------
+		/// <summary>
+		/// default ctor -
+		///	creates a ANN based on the default values in params.ini
+		/// </summary>
 		public NeuralNet()
 		{
 			m_NumInputs = Params.iNumInputs;
@@ -78,11 +80,11 @@ namespace SmartSweepers
 			CreateNet();
 		}
 
-		//------------------------------createNet()------------------------------
-		//
-		//	this method builds the ANN. The weights are all initially set to 
-		//	random values -1 < w < 1
-		//------------------------------------------------------------------------
+		///<summary>
+		/// createNet -
+		///	this method builds the ANN. The weights are all initially set to 
+		///	random values -1 < w < 1
+		///</summary>
 		public void CreateNet()
 		{
 			//create the layers of the network
@@ -102,12 +104,12 @@ namespace SmartSweepers
 				m_Layers[m_NumHiddenLayers] = new NeuronLayer(m_NumOutputs, m_NumInputs);
 		}
 
-		//gets the weights from the NN
-		//---------------------------------GetWeights-----------------------------
-		//
-		//	returns a vector containing the weights
-		//
-		//------------------------------------------------------------------------
+		/// <summary>
+		/// GetWeights -
+		/// gets the weights from the NN
+		/// returns a vector containing the weights
+		/// </summary>
+		/// <returns></returns>
 		public double[] GetWeights()
 		{
 			//this will hold the weights
@@ -125,12 +127,11 @@ namespace SmartSweepers
 			return weights;
 		}
 
-		//returns total number of weights in net
-		//---------------------------------GetNumberOfWeights---------------------
-		//
-		//	returns the total number of weights needed for the net
-		//
-		//------------------------------------------------------------------------
+		/// <summary>
+		/// GetNumberOfWeights -
+		///	returns the total number of weights needed for the net
+		/// </summary>
+		/// <returns>returns total number of weights in net</returns>
 		public int GetNumberOfWeights()
 		{
 			int weights = 0;
@@ -145,13 +146,12 @@ namespace SmartSweepers
 			return weights;
 		}
 
-		//replaces the weights with new ones
-		//-----------------------------------PutWeights---------------------------
-		//
-		//	given a vector of doubles this function replaces the weights in the NN
-		//  with the new values
-		//
-		//------------------------------------------------------------------------
+		///<summary>
+		/// PutWeights -
+		///	given a vector of doubles this function replaces the weights in the NN
+		/// with the new values
+		///</summary>
+		/// <param name="weights"-replaces the weights with new ones></param>
 		public void PutWeights(ref double[] weights)
 		{
 			int cWeight = 0;
@@ -165,12 +165,14 @@ namespace SmartSweepers
 						m_Layers[i].m_Neurons[j].m_vecWeight[k] = weights[cWeight++];
 		}
 
-		//calculates the outputs from a set of inputs
-		//-------------------------------Update-----------------------------------
-		//
-		//	given an input vector this function calculates the output vector
-		//
-		//------------------------------------------------------------------------
+		/// <summary>
+		/// Update -
+		///	given an input vector this function calculates the output vector
+		/// </summary>
+		/// <param name="input"></param>
+		/// <returns>
+		///calculates the outputs from a set of inputs
+		/// </returns>
 		public double[] Update(ref double[] input)
 		{
 			//stores the resultant outputs from each layer
@@ -228,7 +230,12 @@ namespace SmartSweepers
 			return outputs;
 		}
 
-		//sigmoid response curve
+		/// <summary>
+		/// sigmoid response curve
+		/// </summary>
+		/// <param name="activation"></param>
+		/// <param name="response"></param>
+		/// <returns></returns>
 		public double Sigmoid(double activation, double response)
 		{
 			return (1.0 / (1.0 + Math.Exp(-activation / response)));
